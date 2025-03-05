@@ -1,0 +1,34 @@
+---
+
+- name: "playbook instalación paquete"
+  hosts: all
+  become: true
+  become_method: "ansible.builtin.sudo"
+
+  vars:
+    ntp_servers:
+      - "0.uk.pool.ntp.org"
+      - "1.uk.pool.ntp.org"
+      - "2.uk.pool.ntp.org"
+
+  handlers:
+    - name: "Restart service NTP"
+      ansible.builtin.service:
+        name: "ntp"
+        state: "restarted"
+  
+  tasks:
+    - name: "Instalar packages"
+      ansible.builtin.apt:
+        state: "present"
+        pkg:
+          - "ntp"
+          - "sntp"
+          - "ntp-doc"
+
+    - name: "Configure NTP"
+      ansible.builtin.template:
+        src: "ntp.conf.j2"
+        dest: "/etc/ntp.conf"
+        mode: "0644"
+      notify: "Restart service NTP"
