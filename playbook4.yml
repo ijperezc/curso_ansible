@@ -1,0 +1,34 @@
+---
+
+- name: "Playbook variables"
+  hosts: linux_servers
+
+  vars_files:
+    - ./resources/fichero1.yml
+    - ./resources/fichero2.yml
+
+  vars:
+    mensaje: "Mensaje de playbook"
+    curso: "Curso Python - Ansible"
+    entornos:
+      - testing
+      - desarrollo
+      - produccion
+    responsables: ["Juan", "Maria"]
+    desarrollo:
+      tipo: linux
+      memoria: 8GB
+      disco: 80GB
+      
+  tasks:
+    - name: "Ver variables"
+      vars:
+        curso: "Curso Python - Ansible en tarea 1"
+      debug:
+        msg: "Curso: {{ curso }} . Entornos disponibes: {{ entornos }} {{ entornos[0]}} {{ entornos[1:]}} Responsables: {{ responsables }}"
+    - name: "Ver variables 2"
+      debug:
+        msg: "Curso: {{ curso }}. SO: {{ desarrollo }} Capacidad: {{ desarrollo.disco }}"
+    - name: "Ver variables 3"
+      debug:
+        msg: "Data1: {{ data1 }} Data2: {{  data2 }}"
