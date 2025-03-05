@@ -1,0 +1,4 @@
+software_rocky:
+  - httpd
+  - nginx
+  - git
