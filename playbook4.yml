@@ -4,8 +4,7 @@
   hosts: linux_servers
 
   vars_files:
-    - ./resources/fichero1.yml
-    - ./resources/fichero2.yml
+    - ./sensible.yml
 
   vars:
     mensaje: "Mensaje de playbook"
