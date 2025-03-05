@@ -1,0 +1,20 @@
+---
+
+- name: "Playbook variables registradas"
+  hosts: linux_servers
+  
+  
+      
+  tasks:
+    - name: "Obtener fecha"
+      ansible.builtin.shell:
+        cmd: date
+      register: fecha
+
+    - name: "Visualizar variable fecha"
+      ansible.builtin.debug:
+        var: fecha
+
+    - name: "Visualizar solo fecha-hora modo consola"
+      debug:
+        msg: "{{ fecha.stdout }}"
