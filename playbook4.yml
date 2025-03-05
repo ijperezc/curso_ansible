@@ -4,7 +4,7 @@
   hosts: linux_servers
 
   vars_files:
-    - ./sensible2.yml
+    - ./variables/sensible2.yml
 
   vars:
     mensaje: "Mensaje de playbook"
