@@ -1,0 +1,6 @@
+ansible_user: "ws10"
+ansible_password: "1234"
+ansible_connection: winrm
+ansible_port: 5985
+ansible_winrm_server_cert_validation: ignore
+ansible_python_interpreter: C:\Users\ws10\AppData\Local\Programs\Python\Python313\python
